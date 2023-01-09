@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+int Case=1;
+void ac(){
+    int k,i,j,f=1;  cin>>k;
+    int a[k+2];
+    for(i=0; i<k; i++)  cin>>a[i];
+    sort(a, a+k);
+    if(a[0]==1){
+        cout<<"Case "<<Case++<<": No\n";
+        return;
+    }
+    for(i=0; i<k; i++){
+        for(j=2; j*j<=a[i]; j++){
+            if(a[i]%j==0){
+                cout<<"Case "<<Case++<<": No\n";
+                return;
+            }
+        }
+    }
+    cout<<"Case "<<Case++<<": Yes\n";
+}
+signed main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int tc;     cin>>tc;
+    while(tc--){
+        ac();
+    }
+    return 0;
+}
