@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+#define int long long
+#define endl "\n"
+using namespace std;
+int Case=0;
+signed main(){
+
+    int tc;     scanf("%lld", &tc);
+    while(tc--){
+        int n,k,m,i,j,c=0,x;  scanf("%lld %lld %lld", &n, &k, &m);
+        x = min(n, 4ll);
+        vector<int> a(x);
+        for(i=0,j=n; i<x; i++,j--){
+             a[i]=j;
+        }
+        reverse(a.begin(), a.end());
+
+        do{
+            c++;
+            if(c==k)    break;
+        }while(next_permutation(a.begin(), a.end()));
+//
+//        for(i=0; i<x; i++)  cout<<a[i]<<" ";
+//        cout<<endl;
+
+        int sum, res=0;
+        sum = n*(n+1)/2;
+        if(m>=4){
+            k = n-m;
+            k = k*(k+1)/2;
+            res = sum-k;
+            printf("Case %lld: %lld\n", ++Case, res);
+        }
+        else{
+            for(i=x-m; i<x; i++)    res+=a[i];
+            printf("Case %lld: %lld\n", ++Case, res);
+        }
+
+    }
+    return 0;
+}
